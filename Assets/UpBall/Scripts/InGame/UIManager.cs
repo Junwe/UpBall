@@ -77,7 +77,6 @@ public class UIManager : MonoBehaviour
     public void PlusScroe()
     {
         _score++;
-        //txtScore.PlusText(Score * 10, (Score + 1) * 10, 0.2f);
         txtScore.text = (_score * 10 ).ToString();
         if (_score % 10 == 0)
         {
