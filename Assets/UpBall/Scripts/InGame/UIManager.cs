@@ -73,6 +73,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    
     public void PlusScroe()
     {
         _score++;
