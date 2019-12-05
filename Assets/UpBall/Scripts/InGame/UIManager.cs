@@ -45,6 +45,8 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        LevelingData.IsExit = false;
+        LevelingData.IsDie = false;
     }
     // Use this for initialization
     void Start()
