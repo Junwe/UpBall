@@ -58,4 +58,9 @@ public class POPUP_Pause : MonoBehaviour, IPopUp
     {
         PopUpManager.Instance.DisablePopUp(name);
     }
+
+    public void ClickQut()
+    {
+        Application.Quit();
+    }
 }

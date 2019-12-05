@@ -16,6 +16,6 @@ public interface IPlayerAnimation
 
     void SetStateEvent(int mouseEvent);
 
-    void Oncollision(Collision2D collision, BALLSTATE _ballState);
+    void Oncollision(Collision2D collision);
 
 }

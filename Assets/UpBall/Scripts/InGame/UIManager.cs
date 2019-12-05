@@ -91,7 +91,7 @@ public class UIManager : MonoBehaviour
         if (_score > GetBestScore())
             SetBestScore(_score);
         int score = GetBestScore() * 10;
-        txtBestScore.text = "Best " + score.ToString();
+        txtBestScore.text = "BEST " + score.ToString();
 
         Sound.Instance.PlayEffSound(SOUND.S_DIE);
 

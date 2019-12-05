@@ -3593,7 +3593,7 @@ PrefabInstance:
     - target: {fileID: 3740304322088769118, guid: 7a252a537fbd6e543aa0ec03f4d67d5c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1220.2
+      value: 1420.2
       objectReference: {fileID: 0}
     - target: {fileID: 3740304322088769118, guid: 7a252a537fbd6e543aa0ec03f4d67d5c,
         type: 3}
@@ -3624,11 +3624,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 510079328385305158, guid: 7a252a537fbd6e543aa0ec03f4d67d5c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClickCalnle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a252a537fbd6e543aa0ec03f4d67d5c, type: 3}

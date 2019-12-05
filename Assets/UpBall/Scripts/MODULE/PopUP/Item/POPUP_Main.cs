@@ -40,7 +40,7 @@ public class POPUP_Main : MonoBehaviour,IPopUp
 
     public void ClickGuide()
     {
-
+        PopUpManager.Instance.EnablePopUp("I_PopUp_Guide");
     }
     
     public void ClickCalnle()

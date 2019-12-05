@@ -53,14 +53,14 @@ public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
     {
         if (mouseEvent == 0) // up
         {
-            _animator.SetTrigger("jump");
+            _animator.Play("Jump");
             _particleScatterStar.Play();
         }
     }
 
-    public void Oncollision(Collision2D collision, BALLSTATE _ballState)
+    public void Oncollision(Collision2D collision)
     {
-        _animator.SetTrigger("stop");
+        _animator.Play("idle");
         _particleScatterStar.Stop();
     }
 }

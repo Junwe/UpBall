@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ public class POPUP_Creater : MonoBehaviour, IPopUp
     }
     public void Enable()
     {
-        _openTween.Time = 0.5f;
+        _openTween.Time = 0.25f;
         gameObject.SetActive(true);
         _openTween.StartTween();
     }

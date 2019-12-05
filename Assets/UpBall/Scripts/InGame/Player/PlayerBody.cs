@@ -149,8 +149,7 @@ public class PlayerBody : MonoBehaviour, IPlayer
     {
         if (mouseEvent == 0)
         {
-            _playerAnimation.Animator.Play("Jump");
-            // _playerAnimation.Animator.SetTrigger("jump");
+            _playerAnimation.SetStateEvent(mouseEvent);
             Sound.Instance.PlayEffSound(SOUND.S_JUMP);
             if (_info._ballState == BALLSTATE.IDLE)
             {
@@ -198,8 +197,7 @@ public class PlayerBody : MonoBehaviour, IPlayer
                 _info._ballState = BALLSTATE.IDLE;
 
             }
-            //_playerAnimation.Animator.SetTrigger("stop");
-            _playerAnimation.Animator.Play("idle");
+            _playerAnimation.Oncollision(collision);
         }
     }
 
