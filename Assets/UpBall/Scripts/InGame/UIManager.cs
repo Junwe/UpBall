@@ -58,6 +58,9 @@ public class UIManager : MonoBehaviour
             _dieTweenList.Add(i);
         foreach (var i in _dieTweenListScale)
             _dieTweenList.Add(i);
+
+        if (PlayerPrefs.GetInt("FistGuide", 0) == 0)
+            PopUpManager.Instance.EnablePopUp("I_PopUp_Guide");
     }
 
     // Update is called once per frame

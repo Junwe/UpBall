@@ -25,4 +25,9 @@ public class ButtonManager : MonoBehaviour
     {
         PopUpManager.Instance.EnablePopUp("I_PopUp_Pause");
     }
+
+    public void ClickGameGuide()
+    {
+        PopUpManager.Instance.EnablePopUp("I_PopUp_Guide");
+    }
 }
