@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
 {
     private Animator _animator;
-    private Animation _animation;  
+    private Animation _animation; 
+
+    private ParticleSystem _particleScatterStar;
 
     Animator IPlayerAnimation.Animator
     {
@@ -28,7 +30,9 @@ public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
     {
         _animator = GetComponent<Animator>();
         _animation = GetComponent<Animation>();
+        _particleScatterStar = GameObject.Find("Particle_ScatterStar").GetComponent<ParticleSystem>();
         _animator.SetTrigger("stop");
+        _particleScatterStar.Stop();
     }
 
     // Update is called once per frame
@@ -36,11 +40,11 @@ public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
     {
         if (LevelingData.IsDie || LevelingData.IsExit)
         {
-         _animator.enabled = false;
+            _animator.enabled = false;
         }
         else
         {
-         _animator.enabled = true;
+            _animator.enabled = true;
 
         }
     }
@@ -50,11 +54,13 @@ public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
         if (mouseEvent == 0) // up
         {
             _animator.SetTrigger("jump");
+            _particleScatterStar.Play();
         }
     }
 
     public void Oncollision(Collision2D collision, BALLSTATE _ballState)
     {
         _animator.SetTrigger("stop");
+        _particleScatterStar.Stop();
     }
 }
