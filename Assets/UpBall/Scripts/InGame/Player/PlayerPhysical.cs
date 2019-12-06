@@ -50,7 +50,7 @@ public class PlayerPhysical : MonoBehaviour, IPlayerPhysical
     // Update is called once per frame
     void Update()
     {
-        if (LevelingData.IsExit)
+        if (LevelingData.Instance.IsExit)
         {
             if(_isPauseInfoSave == false)
             {

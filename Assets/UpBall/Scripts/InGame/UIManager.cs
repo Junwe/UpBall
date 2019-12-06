@@ -45,8 +45,8 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        LevelingData.IsExit = false;
-        LevelingData.IsDie = false;
+        LevelingData.Instance.IsExit = false;
+        LevelingData.Instance.IsDie = false;
     }
     // Use this for initialization
     void Start()
@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (LevelingData.IsExit == false)
+            if (LevelingData.Instance.IsExit == false)
             {
                 PopUpManager.Instance.EnablePopUp("I_PopUp_Pause");
             }
@@ -85,7 +85,7 @@ public class UIManager : MonoBehaviour
         txtScore.text = (_score * 10 ).ToString();
         if (_score % 10 == 0)
         {
-            LevelingData.SetNextLevel(_score);
+            LevelingData.Instance.SetNextLevel(_score);
         }
     }
 
@@ -111,13 +111,13 @@ public class UIManager : MonoBehaviour
 
     public void ClickReTry()
     {
-        LevelingData.ReSetData();
+        LevelingData.Instance.ReSetData();
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     public void ClickHome()
     {
-        LevelingData.ReSetData();
+        LevelingData.Instance.ReSetData();
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
@@ -156,8 +156,8 @@ public class UIManager : MonoBehaviour
     public void ExitGameNo()
     {
         imgExit.gameObject.SetActive(false);
-        Time.timeScale = LevelingData.curTimeScale;
-        LevelingData.IsExit = false;
+        Time.timeScale = LevelingData.Instance.curTimeScale;
+        LevelingData.Instance.IsExit = false;
     }
 
     public void ClickOption()

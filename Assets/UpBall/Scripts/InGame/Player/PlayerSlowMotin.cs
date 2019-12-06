@@ -46,7 +46,7 @@ public class PlayerSlowMotin : MonoBehaviour, IPlayerSlowMotin
 
         while (_SlowDurationCount < 1.0f)
         {
-            _SlowDurationCount = Mathf.Clamp01(_SlowDurationCount + Time.deltaTime / LevelingData.slowDurationTime);
+            _SlowDurationCount = Mathf.Clamp01(_SlowDurationCount + Time.deltaTime / LevelingData.Instance.slowDurationTime);
             if (direction)
             {
                 objSlowDuration.transform.localScale = new Vector3(1.0f * _SlowDurationCount, 1.0f * _SlowDurationCount, 0f);
@@ -67,7 +67,7 @@ public class PlayerSlowMotin : MonoBehaviour, IPlayerSlowMotin
         _isSlowing = true;
 
         Time.timeScale = _slowScale;
-        LevelingData.curTimeScale = _slowScale;
+        LevelingData.Instance.curTimeScale = _slowScale;
         _slowCrt = StartCoroutine(SetSlowDurtion(true, info));
     }
 
@@ -75,7 +75,7 @@ public class PlayerSlowMotin : MonoBehaviour, IPlayerSlowMotin
     {
         _isSlowing = false;
         Time.timeScale = 1.0f;
-        LevelingData.curTimeScale = 1.0f;
+        LevelingData.Instance.curTimeScale = 1.0f;
 
         objSlowDuration.transform.localScale = Vector3.zero;
         DisableDurationEdge();

@@ -38,7 +38,7 @@ public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
     // Update is called once per frame
     void Update()
     {
-        if (LevelingData.IsDie || LevelingData.IsExit)
+        if (LevelingData.Instance.IsDie || LevelingData.Instance.IsExit)
         {
             _animator.enabled = false;
         }

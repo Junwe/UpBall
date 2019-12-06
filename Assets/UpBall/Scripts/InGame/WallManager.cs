@@ -32,7 +32,7 @@ public class WallManager : MonoBehaviour
     void Start()
     {
 
-        _createCount = LevelingData.wallCreateTime;
+        _createCount = LevelingData.Instance.info.wallCreateTime;
         for (int i = 0; i < 10; ++i)
         {
             GameObject obj = Instantiate(pfWall);
@@ -53,17 +53,17 @@ public class WallManager : MonoBehaviour
     void Update()
     {
 
-        if (LevelingData.IsDie || LevelingData.IsExit)
+        if (LevelingData.Instance.IsDie || LevelingData.Instance.IsExit)
             return;
 
         _createCount += Time.deltaTime;
 
-        if (_createCount >= LevelingData.wallCreateTime)
+        if (_createCount >= LevelingData.Instance.info.wallCreateTime)
         {
-            int count = Random.Range(LevelingData.minBlockCnt, LevelingData.maxBlockCnt);
+            int count = Random.Range(LevelingData.Instance.minBlockCnt, LevelingData.Instance.maxBlockCnt);
             Wall curWall = GetUseWall();
 
-            curWall.SetWallInfo(count, LevelingData.moveSpeed * 1.5f,
+            curWall.SetWallInfo(count, LevelingData.Instance.info.moveSpeed * 1.5f,
                 new Vector3(Random.Range(GetWallMinPositionX(count), GetWallMaxPositionX(count)), 9.68f, 0f), _spriteToStringDictionary);
             _currentUseWallList.Add(curWall);
 

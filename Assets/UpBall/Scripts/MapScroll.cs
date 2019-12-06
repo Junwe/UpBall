@@ -32,10 +32,10 @@ public class MapScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LevelingData.IsExit)
+        if (LevelingData.Instance.IsExit)
             return;
 
-        _objBottomMove.transform.localPosition += new Vector3(0f, LevelingData.moveSpeed * Time.deltaTime, 0f);
+        _objBottomMove.transform.localPosition += new Vector3(0f, LevelingData.Instance.info.moveSpeed * Time.deltaTime, 0f);
         _objTopMove.transform.localPosition = new Vector3(0f, _objBottomMove.transform.localPosition.y + DisntaceY, 1f);
 
         if (_objBottomMove.transform.localPosition.y <= LimitY)

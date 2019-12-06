@@ -72,12 +72,12 @@ public class Wall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(LevelingData.IsExit)
+        if(LevelingData.Instance.IsExit)
             return;
             
         if (IsUse)
         {
-            transform.localPosition += new Vector3(0f, (LevelingData.moveSpeed * 1.5f) * Time.deltaTime, 0f);
+            transform.localPosition += new Vector3(0f, (LevelingData.Instance.info.moveSpeed * 1.5f) * Time.deltaTime, 0f);
 
             if (transform.localPosition.y <= -11.97f)
             {
@@ -117,7 +117,7 @@ public class Wall : MonoBehaviour
     {
         StringFinder finder = new StringFinder();
         List<string> keys = new List<string>(sprtieDictionary.Keys);
-        List<string> ContatinsKeysToGroundTpye = finder.ContatinsToGroundTypeInList(keys, (GROUNDTYPE)LevelingData.nLevelCount);
+        List<string> ContatinsKeysToGroundTpye = finder.ContatinsToGroundTypeInList(keys, (GROUNDTYPE)LevelingData.Instance.nLevelCount);
 
         // 데이터 레벨과 맞는 groundtype를 사용
         if (count == 1)

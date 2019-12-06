@@ -69,7 +69,7 @@ public class PlayerBody : MonoBehaviour, IPlayer
     // Update is called once per frame
     void Update()
     {
-        if (LevelingData.IsDie || LevelingData.IsExit)
+        if (LevelingData.Instance.IsDie || LevelingData.Instance.IsExit)
         {
             return;
         }
@@ -216,7 +216,7 @@ public class PlayerBody : MonoBehaviour, IPlayer
         _playerSlowMotin.ClearPlayer();
         GetComponent<trajectory>().DisableTragectoryPonints();
         gameObject.SetActive(false);
-        LevelingData.IsDie = true;
+        LevelingData.Instance.IsDie = true;
         UIManager.instance.ShakeCamera(0.05f, 0.5f);
         UIManager.instance.YouDied();
     }

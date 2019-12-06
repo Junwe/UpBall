@@ -21,7 +21,7 @@ public class POPUP_Pause : MonoBehaviour, IPopUp
     public void Enable()
     {
         gameObject.SetActive(true);
-        LevelingData.IsExit = true;
+        LevelingData.Instance.IsExit = true;
         _openTween.StartTween();
     }
 
@@ -33,25 +33,25 @@ public class POPUP_Pause : MonoBehaviour, IPopUp
 
     private void SetIsExit()
     {
-        LevelingData.IsExit = false;
+        LevelingData.Instance.IsExit = false;
     }
 
     public void ClickPlay()
     {
         Disable();
-        LevelingData.IsExit = false;
+        LevelingData.Instance.IsExit = false;
     }
 
     public void ClickReTry()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
-        LevelingData.IsExit = false;
+        LevelingData.Instance.IsExit = false;
     }
 
     public void ClickMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-        LevelingData.IsExit = false;
+        LevelingData.Instance.IsExit = false;
     }
 
     public void ClickCalnle()

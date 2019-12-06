@@ -83,7 +83,7 @@ public class TouchPower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LevelingData.IsDie)
+        if (LevelingData.Instance.IsDie)
             return;
 
         //if (Input.GetMouseButtonDown(0))

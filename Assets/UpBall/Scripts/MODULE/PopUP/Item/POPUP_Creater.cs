@@ -22,7 +22,7 @@ public class POPUP_Creater : MonoBehaviour, IPopUp
         _openTween.StartTween();
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("Game_Upball"))
         {
-            LevelingData.IsExit = true;
+            LevelingData.Instance.IsExit = true;
         }
     }
  
@@ -32,7 +32,7 @@ public class POPUP_Creater : MonoBehaviour, IPopUp
         _openTween.ReversePlay();
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("Game_Upball"))
         {
-            LevelingData.IsExit = false;
+            LevelingData.Instance.IsExit = false;
             PlayerPrefs.SetInt("FistGuide", 1);
         }
     }
