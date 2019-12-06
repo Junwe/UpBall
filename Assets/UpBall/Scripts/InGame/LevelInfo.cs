@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class LevelInfo
 {
-    public float moveSpeed = 0.75f;
+    public float moveSpeed = -0.75f;
     public float wallCreateTime = 5f;
     public float slowDurationTime = 0.8f;
     public float _moveSpeedDecrease = -0.1f;

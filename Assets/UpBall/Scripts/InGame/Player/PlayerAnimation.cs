@@ -8,6 +8,7 @@ public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
     private Animation _animation; 
 
     private ParticleSystem _particleScatterStar;
+    private ParticleSystem _particleStar;
 
     Animator IPlayerAnimation.Animator
     {
@@ -31,6 +32,7 @@ public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
         _animator = GetComponent<Animator>();
         _animation = GetComponent<Animation>();
         _particleScatterStar = GameObject.Find("Particle_ScatterStar").GetComponent<ParticleSystem>();
+        _particleStar = GameObject.Find("Particle_Star").GetComponent<ParticleSystem>();
         _animator.SetTrigger("stop");
         _particleScatterStar.Stop();
     }
@@ -60,7 +62,24 @@ public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
 
     public void Oncollision(Collision2D collision)
     {
-        _animator.Play("idle");
-        _particleScatterStar.Stop();
+        if (collision.gameObject.tag.Equals("Ground"))
+        {
+            _animator.Play("idle");
+            _particleScatterStar.Stop();
+            _particleStar.Stop();
+        }
+        if (collision.gameObject.tag.Equals("Wall"))
+        {
+
+        }
+    }
+
+    public void PlayStarParticle(Vector2 point,float movepower)
+    {
+        if (movepower >= 8.0f)
+        {
+            _particleStar.transform.position = new Vector3(point.x, point.y, -6.36f);
+            _particleStar.Play();
+        }
     }
 }

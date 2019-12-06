@@ -14,10 +14,10 @@ public enum BALLSTATE
 }
 public class PlayerBody : MonoBehaviour, IPlayer
 {
-    IPlayerAnimation _playerAnimation;
-    IPlayerPhysical _playerPhysical;
-    IPlayerUI _playerUI;
-    IPlayerSlowMotin _playerSlowMotin;
+    PlayerAnimation _playerAnimation;
+    PlayerPhysical _playerPhysical;
+    PlayerUI _playerUI;
+    PlayerSlowMotin _playerSlowMotin;
 
     IPlayerAnimation IPlayer.animation
     {
@@ -187,6 +187,7 @@ public class PlayerBody : MonoBehaviour, IPlayer
     private void OnCollisionEnter2D(Collision2D collision)
     {
         _playerPhysical.Oncollision(collision);
+        _playerAnimation.Oncollision(collision);
 
         if (collision.gameObject.tag.Equals("Ground"))
         {
@@ -197,7 +198,10 @@ public class PlayerBody : MonoBehaviour, IPlayer
                 _info._ballState = BALLSTATE.IDLE;
 
             }
-            _playerAnimation.Oncollision(collision);
+        }
+        if(collision.gameObject.tag.Equals("Ground") || collision.gameObject.tag.Equals("Wall"))
+        {
+            _playerAnimation.PlayStarParticle(collision.contacts[0].point,_playerPhysical.CurrentMovePower);
         }
     }
 

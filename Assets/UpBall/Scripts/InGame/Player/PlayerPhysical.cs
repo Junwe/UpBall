@@ -15,6 +15,14 @@ public class PlayerPhysical : MonoBehaviour, IPlayerPhysical
         }
     }
 
+    public float CurrentMovePower
+    {
+        get
+        {
+            return _currentMovePower;
+        }
+    }
+
     float _currentMovePower;
     Vector2 _currentMovePowerVector;
     private Vector3 _trajectyVelocity;
