@@ -32,7 +32,6 @@ public class POPUP_Creater : MonoBehaviour, IPopUp
         {
             LevelingData.Instance.IsExit = true;
         }
-        StartCallBack(null);
     }
  
     public void Disable()

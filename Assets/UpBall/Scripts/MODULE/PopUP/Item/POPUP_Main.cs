@@ -34,7 +34,6 @@ public class POPUP_Main : MonoBehaviour,IPopUp
     {
         gameObject.SetActive(true);
         _openTween.StartTween();
-        StartCallBack(null);
     }
 
     public void Disable()

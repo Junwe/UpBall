@@ -31,7 +31,6 @@ public class POPUP_Pause : MonoBehaviour, IPopUp
         gameObject.SetActive(true);
         LevelingData.Instance.IsExit = true;
         _openTween.StartTween();
-        StartCallBack(null);
     }
 
     public void Disable()
