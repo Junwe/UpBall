@@ -46,7 +46,7 @@ public class PlayerSlowMotin : MonoBehaviour, IPlayerSlowMotin
 
         while (_SlowDurationCount < 1.0f)
         {
-            _SlowDurationCount = Mathf.Clamp01(_SlowDurationCount + Time.deltaTime / LevelingData.Instance.slowDurationTime);
+            _SlowDurationCount = Mathf.Clamp01(_SlowDurationCount + Time.deltaTime / LevelingData.Instance.info.slowDurationTime);
             if (direction)
             {
                 objSlowDuration.transform.localScale = new Vector3(1.0f * _SlowDurationCount, 1.0f * _SlowDurationCount, 0f);

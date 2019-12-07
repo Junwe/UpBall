@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public interface IPopUp 
 {
     GameObject obj
@@ -11,5 +11,11 @@ public interface IPopUp
     void Enable();
 
     void Disable();
+
+    UnityAction<string> StartCallBack
+    {
+        get;
+        set;
+    }
     
 }

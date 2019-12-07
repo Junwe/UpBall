@@ -172,8 +172,6 @@ public class PlayerBody : MonoBehaviour, IPlayer
         }
         else
         {
-            // if (_info._ballState == BALLSTATE.JUMP_ONCE && _playerSlowMotin.SlowMotionValue <= 0f)
-            //     _info._ballState = BALLSTATE.NONEMOVEING;
         }
         _playerSlowMotin.SetStateEvent(mouseEvent, _info);
     }
@@ -186,6 +184,11 @@ public class PlayerBody : MonoBehaviour, IPlayer
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.tag.Equals("Wall"))
+        {
+            _playerAnimation.PlayStarParticle(collision.contacts[0].point,_playerPhysical.CurrentMovePower);
+        }
+
         _playerPhysical.Oncollision(collision);
         _playerAnimation.Oncollision(collision);
 
@@ -199,9 +202,10 @@ public class PlayerBody : MonoBehaviour, IPlayer
 
             }
         }
-        if(collision.gameObject.tag.Equals("Ground") || collision.gameObject.tag.Equals("Wall"))
+
+        if(collision.gameObject.tag.Equals("Ground"))
         {
-            _playerAnimation.PlayStarParticle(collision.contacts[0].point,_playerPhysical.CurrentMovePower);
+                        _playerAnimation.PlayStarParticle(collision.contacts[0].point,_playerPhysical.CurrentMovePower);
         }
     }
 

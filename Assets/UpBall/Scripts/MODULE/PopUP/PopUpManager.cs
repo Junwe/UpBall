@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 public class PopUpManager : MonoSingleton<PopUpManager>
 {
     private Dictionary<string,IPopUp> _popupToStringInScene = new Dictionary<string, IPopUp>();
@@ -28,8 +29,11 @@ public class PopUpManager : MonoSingleton<PopUpManager>
         _btnBackGourndClose.gameObject.transform.SetSiblingIndex(target.GetSiblingIndex() - 1);
     }
 
-    public void EnablePopUp(string name)
+    private void SetUpPopUp(string name)
     {
+        if(_popUpLlistStack.Contains(_popupToStringInScene[name]))
+            return;
+            
         if (_btnBackGourndClose == null)
         {
             CreateBackGourndBtn();
@@ -38,6 +42,20 @@ public class PopUpManager : MonoSingleton<PopUpManager>
         _popUpLlistStack.Push(_popupToStringInScene[name]);
         _popupToStringInScene[name].Enable();
     }
+
+    public void EnablePopUp(string name)
+    {
+        SetUpPopUp(name);
+        _popupToStringInScene[name].StartCallBack(null);
+    }
+
+        public void EnablePopUp(string name,string value)
+    {
+        SetUpPopUp(name);
+        _popupToStringInScene[name].StartCallBack(value);
+    }
+
+
     public void DisablePopUp(string name)
     {            
         _btnBackGourndClose.gameObject.SetActive(false);

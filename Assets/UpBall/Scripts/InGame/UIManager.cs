@@ -83,7 +83,7 @@ public class UIManager : MonoBehaviour
     {
         _score++;
         txtScore.text = (_score * 10 ).ToString();
-        if (_score % 10 == 0)
+        if (_score % LevelingData.Instance.info.smallNextLevelScore == 0)
         {
             LevelingData.Instance.SetNextLevel(_score);
         }

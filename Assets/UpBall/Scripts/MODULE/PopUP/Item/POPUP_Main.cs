@@ -1,11 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class POPUP_Main : MonoBehaviour,IPopUp
 {
     [SerializeField]
     private TweenScale _openTween;
+
+    private UnityAction<string> _startCallBack = (string value) => { };
+
+    public UnityAction<string> StartCallBack
+    {
+        get { return _startCallBack;}
+        set {_startCallBack = value;}
+    }
     // Start is called before the first frame update
     public GameObject obj
     {
@@ -26,6 +34,7 @@ public class POPUP_Main : MonoBehaviour,IPopUp
     {
         gameObject.SetActive(true);
         _openTween.StartTween();
+        StartCallBack(null);
     }
 
     public void Disable()

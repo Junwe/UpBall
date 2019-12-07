@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
 public class POPUP_Pause : MonoBehaviour, IPopUp
 {
     [SerializeField]
@@ -10,6 +10,14 @@ public class POPUP_Pause : MonoBehaviour, IPopUp
     public GameObject obj
     {
         get { return gameObject;}
+    }
+
+    private UnityAction<string> _startCallBack = (string value)=>{};
+
+    public UnityAction<string> StartCallBack
+    {
+        get { return _startCallBack;}
+        set {_startCallBack = value;}
     }
     
     // Start is called before the first frame update
@@ -23,6 +31,7 @@ public class POPUP_Pause : MonoBehaviour, IPopUp
         gameObject.SetActive(true);
         LevelingData.Instance.IsExit = true;
         _openTween.StartTween();
+        StartCallBack(null);
     }
 
     public void Disable()
@@ -38,20 +47,19 @@ public class POPUP_Pause : MonoBehaviour, IPopUp
 
     public void ClickPlay()
     {
-        Disable();
-        LevelingData.Instance.IsExit = false;
+        PopUpManager.Instance.DisablePopUp(gameObject.name);
     }
 
     public void ClickReTry()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         LevelingData.Instance.IsExit = false;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     public void ClickMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         LevelingData.Instance.IsExit = false;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     public void ClickCalnle()

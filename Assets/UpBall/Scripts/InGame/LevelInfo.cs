@@ -14,6 +14,9 @@ public class LevelInfo
     public float _moveSpeedMin = -3.0f;
     public float _wallCreateTimeMin = 2f;
     public float _slowDurationTimeMin = 0.3f;
+    public int smallNextLevelScore = 5;
+    public int[] nextLevelScoreList = { 10, 30, 50, 60 };
+
 
     public void Set(LevelInfo info)
     {
