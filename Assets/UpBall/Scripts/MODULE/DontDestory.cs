@@ -11,7 +11,7 @@ public class DontDestory : MonoBehaviour
         LevelingData.Instance.SetInfo();
         //string temp = JsonUtility.ToJson(LevelingData.Instance.info,true);
         //Debug.Log(temp);
-        StartCoroutine(GetLevingData());
+        //StartCoroutine(GetLevingData());
     }
 
     public void ClickUpdate()

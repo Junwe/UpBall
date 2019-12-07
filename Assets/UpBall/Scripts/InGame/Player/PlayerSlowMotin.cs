@@ -28,7 +28,7 @@ public class PlayerSlowMotin : MonoBehaviour, IPlayerSlowMotin
     // Start is called before the first frame update
     void Start()
     {
-        objSlowDuration = GameObject.Find("Ball_Dr (1)");
+        objSlowDuration = GameObject.Find("Ball_Dr");
     }
 
     // Update is called once per frame

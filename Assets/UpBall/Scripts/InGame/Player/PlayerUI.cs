@@ -24,7 +24,7 @@ public class PlayerUI : MonoBehaviour,IPlayerUI
     // Start is called before the first frame update
     void Awake()
     {
-        objTrailRender = GameObject.Find("Trail (1)");
+        objTrailRender = GameObject.Find("Trail");
         _objGauge = GameObject.Find("Gauge");
         _objGaugeBG = GameObject.Find("Gauge_BG");
         DisableTrail();

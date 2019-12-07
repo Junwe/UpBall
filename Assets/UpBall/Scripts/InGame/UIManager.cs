@@ -22,10 +22,14 @@ public class UIManager : MonoBehaviour
     public TweenMove[] _dieTweenListMove;
     public TweenScale[] _dieTweenListScale;
 
+    public TweenAlpha _fingerAlpha;
+    public ParticleSystem _fingerParticle;
+
     private int _score = 0;
     private bool _ExitToggle = false;
 
     private List<ITween> _dieTweenList = new List<ITween>();
+    
 
 
 
@@ -72,11 +76,21 @@ public class UIManager : MonoBehaviour
             {
                 PopUpManager.Instance.EnablePopUp("I_PopUp_Pause");
             }
-            else
+        }
+        if(Input.GetMouseButtonDown(0))
+        {
+            if(_fingerAlpha.gameObject.active)
             {
-                PopUpManager.Instance.DisablePopUp("I_PopUp_Pause");
+                _fingerParticle.Stop();
+                _fingerAlpha.StartTween();
+                Invoke("EnablePingerAlpha",_fingerAlpha.Time);
             }
         }
+    }
+
+    private void EnablePingerAlpha()
+    {
+        _fingerAlpha.gameObject.SetActive(false);
     }
     
     public void PlusScroe()

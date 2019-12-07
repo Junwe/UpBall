@@ -12,6 +12,14 @@ public class PopUpManager : MonoSingleton<PopUpManager>
     private Button _btnBackGourndClose;
 
     public GameObject _objBackGroundBtn;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            DisableTopPopUp();
+        }
+    }
     public void AddPop(string name, IPopUp popup)
     {
         if(_popupToStringInScene.ContainsKey(name))
