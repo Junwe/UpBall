@@ -158,7 +158,7 @@ public class Wall : MonoBehaviour
 
     private void SetWallObjCnt(int Count)
     {
-        if (arrWall.Length <= Count)
+        if (arrWall.Length < Count)
         {
             return;
         }

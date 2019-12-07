@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelingData : MonoSingleton<LevelingData>
 {
     public LevelInfo info;
-    public int minBlockCnt = 4;
+    public int minBlockCnt = 5;
     public int maxBlockCnt = 5;
 
     public bool IsExit = false;
@@ -27,8 +27,8 @@ public class LevelingData : MonoSingleton<LevelingData>
             info = new LevelInfo();
         }       
 
-         minBlockCnt = 4;
-         maxBlockCnt = 4;
+         minBlockCnt = 5;
+         maxBlockCnt = 5;
 
         IsExit = false;
         IsDie = false;
@@ -53,12 +53,14 @@ public class LevelingData : MonoSingleton<LevelingData>
 
     public  void SetMoveSpeed(float moveSpeed)
     {
-        moveSpeed = Mathf.Clamp(moveSpeed, info._moveSpeedMin, -0.75f);
+        info.moveSpeed = Mathf.Clamp(moveSpeed, info._moveSpeedMin, 0.0f);
+        Debug.Log("info.moveSpeed : " + info.moveSpeed);
     }
 
     public  void SetWallCreateTime(float createTime)
     {
-        info.wallCreateTime = Mathf.Clamp(createTime, info._wallCreateTimeMin, 5f);
+        info.wallCreateTime = Mathf.Clamp(createTime, info._wallCreateTimeMin, 10f);
+        
     }
 
     public  void SetBlockCnt(int min, int max)
@@ -74,13 +76,14 @@ public class LevelingData : MonoSingleton<LevelingData>
 
     public  void SetNextLevel(int score)
     {
-        SetMoveSpeed(info.moveSpeed - info._moveSpeedDecrease);
-        SetWallCreateTime(info.wallCreateTime - info._wallCreateTimeDecrease);
+        Debug.Log(info.moveSpeed + info._moveSpeedDecrease);
+        SetMoveSpeed(info.moveSpeed + info._moveSpeedDecrease);
+        SetWallCreateTime(info.wallCreateTime + info._wallCreateTimeDecrease);
 
         if (score % info.nextLevelScoreList[nLevelCount] == 0)
         {
             SetBlockCnt(minBlockCnt - 1, minBlockCnt + 1);
-            SetSlowTime(info.slowDurationTime - info._slowDurationDecrease);
+            SetSlowTime(info.slowDurationTime + info._slowDurationDecrease);
             nLevelCount++;
             Mathf.Clamp(nLevelCount, 0, 5);
         }
