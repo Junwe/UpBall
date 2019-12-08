@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
 {
-    private Animator _animator;
+    protected Animator _animator;
     private Animation _animation; 
 
-    private ParticleSystem _particleScatterStar;
-    private ParticleSystem _particleStar;
+    protected ParticleSystem _particleScatterStar;
+    protected ParticleSystem _particleStar;
 
     Animator IPlayerAnimation.Animator
     {
@@ -74,11 +74,13 @@ public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
         }
     }
 
-    public void PlayStarParticle(Vector2 point,float movepower)
+    public void PlayStarParticle(Vector2 point,float movepower,Color color)
     {
         if (movepower >= 8.0f)
         {
             _particleStar.transform.position = new Vector3(point.x, point.y, -6.36f);
+            ParticleSystem.MainModule ps = _particleStar.main;
+            ps.startColor = color;
             _particleStar.Play();
         }
     }

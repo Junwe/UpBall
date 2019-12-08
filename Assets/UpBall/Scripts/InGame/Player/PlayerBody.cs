@@ -14,10 +14,10 @@ public enum BALLSTATE
 }
 public class PlayerBody : MonoBehaviour, IPlayer
 {
-    PlayerAnimation _playerAnimation;
-    PlayerPhysical _playerPhysical;
-    PlayerUI _playerUI;
-    PlayerSlowMotin _playerSlowMotin;
+    protected PlayerAnimation _playerAnimation;
+    protected PlayerPhysical _playerPhysical;
+    protected PlayerUI _playerUI;
+    protected PlayerSlowMotin _playerSlowMotin;
 
     IPlayerAnimation IPlayer.animation
     {
@@ -186,7 +186,7 @@ public class PlayerBody : MonoBehaviour, IPlayer
     {
         if(collision.gameObject.tag.Equals("Wall"))
         {
-            _playerAnimation.PlayStarParticle(collision.contacts[0].point,_playerPhysical.CurrentMovePower);
+            _playerAnimation.PlayStarParticle(collision.contacts[0].point,_playerPhysical.CurrentMovePower,new Color(255f,255f,255f));
         }
 
         _playerPhysical.Oncollision(collision);
@@ -205,7 +205,20 @@ public class PlayerBody : MonoBehaviour, IPlayer
 
         if(collision.gameObject.tag.Equals("Ground"))
         {
-                        _playerAnimation.PlayStarParticle(collision.contacts[0].point,_playerPhysical.CurrentMovePower);
+            Color color = new Color(255f, 255f, 255f);
+            Wall colWall = collision.gameObject.GetComponent<Wall>();
+            if (colWall != null)
+            {
+                if (colWall.GroundType == GROUNDTYPE.Ground)
+                    color = new Color(255f, 0f, 0f);
+                else if (colWall.GroundType == GROUNDTYPE.Flower)
+                    color = new Color(0f, 200f, 0f);
+                else if (colWall.GroundType == GROUNDTYPE.Ice)
+                    color = new Color(0f, 0f, 255f);
+                else if (colWall.GroundType == GROUNDTYPE.Lava)
+                    color = new Color(255f, 0f, 0f);
+            }
+            _playerAnimation.PlayStarParticle(collision.contacts[0].point,_playerPhysical.CurrentMovePower,color);
         }
     }
 

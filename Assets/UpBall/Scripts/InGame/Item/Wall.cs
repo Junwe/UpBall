@@ -25,6 +25,8 @@ public class Wall : MonoBehaviour
     public GameObject[] arrWall;
     public BoxCollider2D collider2d;
 
+    public GROUNDTYPE GroundType;
+
     private bool _isScore = false; // score를 더해준 벽인지 체크하는 변수
     private bool _isUse = false;
     private float _moveSpeed = 0f;
@@ -118,6 +120,7 @@ public class Wall : MonoBehaviour
         StringFinder finder = new StringFinder();
         List<string> keys = new List<string>(sprtieDictionary.Keys);
         List<string> ContatinsKeysToGroundTpye = finder.ContatinsToGroundTypeInList(keys, (GROUNDTYPE)LevelingData.Instance.nLevelCount);
+        GroundType = (GROUNDTYPE)LevelingData.Instance.nLevelCount;
 
         // 데이터 레벨과 맞는 groundtype를 사용
         if (count == 1)

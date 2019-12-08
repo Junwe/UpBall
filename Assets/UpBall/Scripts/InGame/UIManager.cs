@@ -99,7 +99,11 @@ public class UIManager : MonoBehaviour
         txtScore.text = (_score * 10 ).ToString();
         if (_score % LevelingData.Instance.info.smallNextLevelScore == 0)
         {
-            LevelingData.Instance.SetNextLevel(_score);
+            LevelingData.Instance.SetSmallNextLevel();
+        }
+        if (_score % LevelingData.Instance.info.nextLevelScoreList[LevelingData.Instance.nLevelCount] == 0)
+        {
+            LevelingData.Instance.SetBigNextLevel();
         }
     }
 
