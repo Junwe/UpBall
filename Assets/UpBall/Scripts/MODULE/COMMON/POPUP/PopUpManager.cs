@@ -15,7 +15,7 @@ public class PopUpManager : MonoSingleton<PopUpManager>
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && _popUpLlistStack.Count > 0)
         {
             DisableTopPopUp();
         }

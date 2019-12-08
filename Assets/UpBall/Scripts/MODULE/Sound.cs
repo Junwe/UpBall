@@ -70,4 +70,9 @@ public class Sound : MonoSingleton<Sound>
         bgmSource.loop = true;
         bgmSource.Play();
     }
+
+    public void SetPlaySpeed(float speed)
+    {
+        bgmSource.pitch = speed;
+    }
 }

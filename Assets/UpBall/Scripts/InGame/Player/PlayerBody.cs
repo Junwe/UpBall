@@ -124,7 +124,7 @@ public class PlayerBody : MonoBehaviour, IPlayer
                     SetStateEvent(1);
                 }
 
-                if (_isUp && !EventSystem.current.IsPointerOverGameObject(0))
+                if (_isUp)
                 {
                     TouchPower.instance.SetUpEvent(Input.mousePosition);
                     _playerPhysical.SetMouseButtonUp(TouchPower.instance.Direction, TouchPower.instance.MovePower);
@@ -134,7 +134,7 @@ public class PlayerBody : MonoBehaviour, IPlayer
         }
 
 
-        if (transform.position.y <= -10.79f)
+        if (transform.position.y <= -10.79f) // die
         {
             ClearPlayer();
         }
@@ -214,7 +214,7 @@ public class PlayerBody : MonoBehaviour, IPlayer
                 else if (colWall.GroundType == GROUNDTYPE.Flower)
                     color = new Color(0f, 200f, 0f);
                 else if (colWall.GroundType == GROUNDTYPE.Ice)
-                    color = new Color(0f, 0f, 255f);
+                    color = new Color(255f, 255f, 255f);
                 else if (colWall.GroundType == GROUNDTYPE.Lava)
                     color = new Color(255f, 0f, 0f);
             }
