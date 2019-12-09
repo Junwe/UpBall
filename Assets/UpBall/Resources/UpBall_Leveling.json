@@ -1,0 +1,19 @@
+{
+    "moveSpeed": -0.75,
+    "wallCreateTime": 5.0,
+    "slowDurationTime": 0.5,
+    "_moveSpeedDecrease": -0.125,
+    "_wallCreateTimeDecrease": -0.45,
+    "_slowDurationDecrease": -0.08,
+    "_moveSpeedMin": -7.0,
+    "_wallCreateTimeMin": 2.0,
+    "smallNextLevelScore": 7,
+    "_slowDurationTimeMin": 0.03,
+    "nextLevelScoreList": [
+        10,
+        30,
+        70,
+        90
+    ]
+    
+}

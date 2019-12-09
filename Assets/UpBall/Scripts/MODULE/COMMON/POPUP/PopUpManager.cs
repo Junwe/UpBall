@@ -34,7 +34,14 @@ public class PopUpManager : MonoSingleton<PopUpManager>
         _btnBackGourndClose.gameObject.SetActive(true);
         _btnBackGourndClose.gameObject.transform.SetParent(target.parent); 
         _btnBackGourndClose.gameObject.transform.localPosition = Vector3.zero;
-        _btnBackGourndClose.gameObject.transform.SetSiblingIndex(target.GetSiblingIndex() - 1);
+        if(target.GetSiblingIndex() == 0)
+        {
+            _btnBackGourndClose.gameObject.transform.SetSiblingIndex(0);
+        }
+        else
+        {
+            _btnBackGourndClose.gameObject.transform.SetSiblingIndex(target.GetSiblingIndex() - 1);
+        }
     }
 
     private void SetUpPopUp(string name)

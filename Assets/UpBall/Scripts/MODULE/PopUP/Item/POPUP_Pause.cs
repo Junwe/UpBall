@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -51,13 +51,13 @@ public class POPUP_Pause : MonoBehaviour, IPopUp
 
     public void ClickReTry()
     {
-        LevelingData.Instance.IsExit = false;
+        LevelingData.Instance.ReSetData();
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     public void ClickMenu()
     {
-        LevelingData.Instance.IsExit = false;
+        LevelingData.Instance.ReSetData();
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 

@@ -116,8 +116,8 @@ public class UIManager : MonoBehaviour
 
         Sound.Instance.PlayEffSound(SOUND.S_DIE);
 
-        //TouchPower.instance.objStart.SetActive(false);
-        //TouchPower.instance.objEnd.SetActive(false);
+        TouchPower.instance.objStart.SetActive(false);
+        TouchPower.instance.objEnd.SetActive(false);
 
         objDieUI.gameObject.SetActive(true);
 

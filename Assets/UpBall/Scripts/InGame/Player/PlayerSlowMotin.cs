@@ -58,8 +58,8 @@ public class PlayerSlowMotin : MonoBehaviour, IPlayerSlowMotin
         _slowMotionValue = 0f;
         ClearSlowMotion();
 
-        //TouchPower.instance.objStart.SetActive(false);
-        //TouchPower.instance.objEnd.SetActive(false);
+        TouchPower.instance.objStart.SetActive(false);
+        TouchPower.instance.objEnd.SetActive(false);
     }
 
     private void SetSlowMotionTime(PlayerInfo info)

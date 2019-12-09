@@ -9,11 +9,6 @@ public interface IPlayerAnimation
         get;
     }
 
-    Animation Animation
-    {
-        get;
-    }
-
     void SetStateEvent(int mouseEvent);
 
     void Oncollision(Collision2D collision);

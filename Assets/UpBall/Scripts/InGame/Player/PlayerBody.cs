@@ -19,6 +19,8 @@ public class PlayerBody : MonoBehaviour, IPlayer
     protected PlayerUI _playerUI;
     protected PlayerSlowMotin _playerSlowMotin;
 
+    public GameObject objParticleStar; 
+
     IPlayerAnimation IPlayer.animation
     {
         get
@@ -64,6 +66,8 @@ public class PlayerBody : MonoBehaviour, IPlayer
         _playerPhysical = GetComponent<PlayerPhysical>();
         _playerUI = GetComponent<PlayerUI>();
         _playerSlowMotin = GetComponent<PlayerSlowMotin>();
+
+        _playerAnimation.CreateParticleStar(objParticleStar);
     }
 
     // Update is called once per frame

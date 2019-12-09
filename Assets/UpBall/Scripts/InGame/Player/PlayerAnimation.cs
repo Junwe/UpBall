@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
 {
     protected Animator _animator;
-    private Animation _animation; 
 
     protected ParticleSystem _particleScatterStar;
     protected ParticleSystem _particleStar;
@@ -18,23 +17,19 @@ public class PlayerAnimation : MonoBehaviour, IPlayerAnimation
         }
     }
 
-    Animation IPlayerAnimation.Animation
-    {
-        get
-        {
-            return _animation;
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
         _animator = GetComponent<Animator>();
-        _animation = GetComponent<Animation>();
         _particleScatterStar = GameObject.Find("Particle_ScatterStar").GetComponent<ParticleSystem>();
-        _particleStar = GameObject.Find("Particle_Star").GetComponent<ParticleSystem>();
         _animator.SetTrigger("stop");
         _particleScatterStar.Stop();
+    }
+
+    public void CreateParticleStar(GameObject obj)
+    {
+        GameObject temp = Instantiate(obj,transform.parent.parent);
+        _particleStar = temp.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame

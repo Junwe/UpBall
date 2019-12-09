@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 public class TouchPower : MonoBehaviour
 {
@@ -83,44 +85,86 @@ public class TouchPower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LevelingData.Instance.IsDie)
+        if (LevelingData.Instance.IsDie || LevelingData.Instance.IsExit)
+        {
+            objEnd.SetActive(false);
+            objStart.SetActive(false);
             return;
+        }
 
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    objStart.SetActive(true);
-        //    objStart.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(StartMousePos).x, Camera.main.ScreenToWorldPoint(StartMousePos).y, 0f);
-        //}
-        //if (Input.GetMouseButtonUp(0))
-        //{
-        //    objStart.SetActive(false);
-        //    objEnd.SetActive(false);
-        //}
-        //if (Input.GetMouseButton(0))
-        //{
-        //    Vector3 vEnd = GetObjEndPos(Input.mousePosition);
-        //    objEnd.transform.localPosition = new Vector3(vEnd.x, vEnd.y, 0f);
-        //    objEnd.SetActive(true);
-        //}
+        bool isTouchPossivle = true;
+        bool _isDown = false;
+        bool _isDrage = false;
+        bool _isUp = false;
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (Input.touchCount > 0)
+            {
+                if (EventSystem.current.IsPointerOverGameObject(0))
+                {
+                    isTouchPossivle = false;
+                }
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began)
+                    _isDown = true;
+                if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+                    _isDrage = true;
+                if (touch.phase == TouchPhase.Ended)
+                    _isUp = true;
+            }
+        }
+        else
+        {
+            if (EventSystem.current.IsPointerOverGameObject(-1))
+            {
+                isTouchPossivle = false;
+            }
+            if (Input.GetMouseButtonDown(0))
+                _isDown = true;
+            if (Input.GetMouseButton(0))
+                _isDrage = true;
+            if (Input.GetMouseButtonUp(0))
+                _isUp = true;
+        }
+
+        if (isTouchPossivle)
+        {
+            if (_isDown)
+            {
+                objStart.SetActive(true);
+                objStart.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(StartMousePos).x, Camera.main.ScreenToWorldPoint(StartMousePos).y, -3f);
+            }
+            if (_isUp)
+            {
+                objStart.SetActive(false);
+                objEnd.SetActive(false);
+            }
+            if (_isDrage)
+            {
+                Vector3 vEnd = GetObjEndPos(Input.mousePosition);
+                objEnd.transform.localPosition = new Vector3(vEnd.x, vEnd.y, -3f);
+                objEnd.SetActive(true);
+            }
+        }
     }
     public void SetUpEvent(Vector3 mousePosition)
     {
-        //objStart.SetActive(false);
-        //objEnd.SetActive(false);
+        objStart.SetActive(false);
+        objEnd.SetActive(false);
     }
 
     public void SetDownEvent(Vector3 mousePosition)
     {
         StartMousePos = mousePosition;
-        objStart.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(StartMousePos).x, Camera.main.ScreenToWorldPoint(StartMousePos).y, 0f);
+        objStart.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(StartMousePos).x, Camera.main.ScreenToWorldPoint(StartMousePos).y, -3f);
     }
 
     public void SetStayEvent(Vector3 mousePosition)
     {
         Vector3 vEnd = GetObjEndPos(mousePosition);
-        instance.objEnd.transform.localPosition = new Vector3(vEnd.x, vEnd.y, 0f);
-        //objEnd.SetActive(true);
-        //objStart.SetActive(true);
+        instance.objEnd.transform.localPosition = new Vector3(vEnd.x, vEnd.y, -3f);
+        objEnd.SetActive(true);
+        objStart.SetActive(true);
 
         SetTouchPowerInfo(mousePosition);
     }

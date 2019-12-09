@@ -30,4 +30,9 @@ public class ButtonManager : MonoBehaviour
     {
         PopUpManager.Instance.EnablePopUp("I_PopUp_Guide");
     }
+
+    public void ClickSelect()
+    {
+        PopUpManager.Instance.EnablePopUp("I_PopUp_Select");
+    }
 }

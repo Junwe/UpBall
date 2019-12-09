@@ -82,12 +82,10 @@ public class LevelingData : MonoSingleton<LevelingData>
 
     public void SetBigNextLevel()
     {
-        if( nLevelCount > info.nextLevelScoreList.Length)
-            nLevelCount = info.nextLevelScoreList.Length - 1;
         SetBlockCnt(minBlockCnt - 1, minBlockCnt + 1);
         SetSlowTime(info.slowDurationTime + info._slowDurationDecrease);
         nLevelCount++;
-        Mathf.Clamp(nLevelCount, 0, 5);
+        nLevelCount = Mathf.Clamp(nLevelCount, 0, info.nextLevelScoreList.Length - 1);
     }
 
 }

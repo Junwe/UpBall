@@ -5,10 +5,12 @@ using UnityEngine.Networking;
 
 public class DontDestory : MonoBehaviour
 {
+    [SerializeField]    
+    private TextAsset _levlingdata;
     void Awake()
     {
         DontDestroyOnLoad(this);
-        LevelingData.Instance.SetInfo();
+        LevelingData.Instance.SetInfo(_levlingdata.text);
         //string temp = JsonUtility.ToJson(LevelingData.Instance.info,true);
         //Debug.Log(temp);
         //StartCoroutine(GetLevingData());

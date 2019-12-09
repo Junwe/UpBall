@@ -40,8 +40,13 @@ public class POPUP_Creater : MonoBehaviour, IPopUp
         _openTween.ReversePlay();
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("Game_Upball"))
         {
-            LevelingData.Instance.IsExit = false;
+            Invoke("SetIsExit", 0.05f);
             PlayerPrefs.SetInt("FistGuide", 1);
         }
+    }
+
+    private void SetIsExit()
+    {
+        LevelingData.Instance.IsExit = false;
     }
 }
