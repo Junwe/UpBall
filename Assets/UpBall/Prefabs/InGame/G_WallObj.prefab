@@ -294,6 +294,7 @@ MonoBehaviour:
   - {fileID: 1512989063114314}
   - {fileID: 1122965528169784}
   collider2d: {fileID: 61553880543311796}
+  GroundType: 0
 --- !u!50 &50544064334081716
 Rigidbody2D:
   serializedVersion: 4
@@ -409,7 +410,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 59f7df6adad6ac645b6491db96ef2e1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c1572f8c7d9bc984794f458615a1d14b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

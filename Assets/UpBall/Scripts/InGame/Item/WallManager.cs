@@ -95,7 +95,7 @@ public class WallManager : MonoBehaviour
     }
     private float GetWallMaxPositionX(int count)
     {
-        return (2.6f - (5 - count) * 1f);
+        return (6.66f - ((count - 1) * 1f));
     }
 
     public void HideGround()
