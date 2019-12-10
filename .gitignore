@@ -23,7 +23,6 @@ ExportedObj/
 *.svd
 *.pdb
 *.opendb
-*.symbols.zip
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -33,6 +32,8 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
+*.symbols.zip
+*.aab
 *.apk
 *.unitypackage
 .idea/.idea.Project_AM/riderModule.iml
