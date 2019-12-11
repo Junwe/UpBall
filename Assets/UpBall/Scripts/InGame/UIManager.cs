@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
                 PopUpManager.Instance.EnablePopUp("I_PopUp_Pause");
             }
         }
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && !LevelingData.Instance.IsExit )
         {
             if(_fingerAlpha.gameObject.active)
             {

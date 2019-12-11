@@ -30,10 +30,13 @@ public class PlayerPhysical : MonoBehaviour, IPlayerPhysical
     private GameObject parentMoveObj;
     private GameObject parentObj;
 
+    private BoxCollider2D _boxCollider;
+
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        _boxCollider = GetComponent<BoxCollider2D>();
         parentMoveObj = GameObject.Find("G_InGameObject");
         parentObj = GameObject.Find("G_Ball");
     }
@@ -55,7 +58,6 @@ public class PlayerPhysical : MonoBehaviour, IPlayerPhysical
         myRigidbody.angularVelocity = _pausedAngularVelocity;
     }
     private bool _isPauseInfoSave = false;
-    // Update is called once per frame
     void Update()
     {
         if (LevelingData.Instance.IsExit)
@@ -87,6 +89,17 @@ public class PlayerPhysical : MonoBehaviour, IPlayerPhysical
 
         _currentMovePower = myRigidbody.velocity.magnitude;
         _currentMovePowerVector = myRigidbody.velocity;
+        // if (testbool)
+        // {
+        //     Debug.Log(myRigidbody.mass);
+        //     testcount += Time.deltaTime;
+        //     Vector2 imp = new Vector2(testVector.x, testVector.y - (Physics2D.gravity.magnitude * testcount));
+        //     Debug.Log("계산한 량 : " + imp);
+        //     //Debug.Log("현재 위치 : " + transform.localPosition);
+        //     Debug.Log("현재 량   : " + myRigidbody.velocity);
+        //     Debug.Log("T : " + testcount);
+
+        // }
     }
 
     public void SetMouseButton(Vector3 direction, float movePower)
@@ -108,7 +121,6 @@ public class PlayerPhysical : MonoBehaviour, IPlayerPhysical
 
             if (myRigidbody.velocity != Vector2.zero)
                 myRigidbody.velocity = Vector2.zero;
-
             myRigidbody.AddForce(direction * movePower, ForceMode2D.Impulse);
             _trajectyVelocity = GetComponent<trajectory>().temp;
         }
@@ -118,17 +130,17 @@ public class PlayerPhysical : MonoBehaviour, IPlayerPhysical
     {
         if (collision.gameObject.tag.Equals("Wall"))
         {
+            Debug.Log(transform.localPosition);
             if (_currentMovePower >= 8.0f)
                 UIManager.instance.ShakeCamera(0.05f, 0.1f);
 
             _currentMovePower -= 2f;
             Vector3 incomingVector = _currentMovePowerVector;//transform.position - _startMovePos;  //입사각
                                                              //incomingVector = incomingVector.normalized * _currentMovePower;
-            Vector3 inverseVector = -incomingVector; //입사각의 반대각
 
             Vector3 normalVector = collision.contacts[0].normal; //법선벡터
 
-            Vector3 reflectVector = Vector3.Reflect(incomingVector, normalVector); //반사각
+            Vector3 reflectVector = Vector2.Reflect(incomingVector, normalVector); //반사각
 
             myRigidbody.velocity = Vector2.zero;
 

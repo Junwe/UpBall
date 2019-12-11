@@ -46,6 +46,8 @@ public class WallManager : MonoBehaviour
         {
             _spriteToStringDictionary.Add(s.name, s);
         }
+
+        CreateWall(2.7f);
     }
 
 
@@ -60,15 +62,20 @@ public class WallManager : MonoBehaviour
 
         if (_createCount >= LevelingData.Instance.info.wallCreateTime)
         {
-            int count = Random.Range(LevelingData.Instance.minBlockCnt, LevelingData.Instance.maxBlockCnt);
-            Wall curWall = GetUseWall();
-
-            curWall.SetWallInfo(count, LevelingData.Instance.info.moveSpeed * 1.5f,
-                new Vector3(Random.Range(GetWallMinPositionX(count), GetWallMaxPositionX(count)), 9.68f, 0f), _spriteToStringDictionary);
-            _currentUseWallList.Add(curWall);
+            CreateWall(9.68f);
 
             _createCount = 0f;
         }
+    }
+
+    void CreateWall(float creatrY = 9.68f)
+    {
+        int count = Random.Range(LevelingData.Instance.minBlockCnt, LevelingData.Instance.maxBlockCnt);
+        Wall curWall = GetUseWall();
+
+        curWall.SetWallInfo(count, LevelingData.Instance.info.moveSpeed * 1.5f,
+            new Vector3(Random.Range(GetWallMinPositionX(count), GetWallMaxPositionX(count)), creatrY, 0f), _spriteToStringDictionary);
+        _currentUseWallList.Add(curWall);
     }
 
     public void DeleteWall(Wall deleteWall)
@@ -142,4 +149,29 @@ public class WallManager : MonoBehaviour
         }
         return false;
     }
+
+    public bool IsRightWallCol(Vector2 pos,Vector2 size)
+    {
+        if ((pos.x + (size.x/2f)) >= objRightWall.transform.position.x - 0.5f &&
+          (pos.x - (size.x/2f)) <= objRightWall.transform.position.x + 0.5f &&
+           (pos.y + (size.y/2f)) >= objRightWall.transform.position.y - 11.205f &&
+           (pos.y - (size.y/2f)) <= objRightWall.transform.position.y + 11.205f)
+        {
+            return true;
+        }
+        return false;
+    }
+
+        public bool IsLeftWallCol(Vector2 pos,Vector2 size)
+    {
+        if ((pos.x + (size.x/2f)) >= objLeftWall.transform.position.x - 0.5f &&
+          (pos.x - (size.x/2f)) <= objLeftWall.transform.position.x + 0.5f &&
+           (pos.y + (size.y/2f)) >= objLeftWall.transform.position.y - 11.205f &&
+           (pos.y - (size.y/2f)) <= objLeftWall.transform.position.y + 11.205f)
+        {
+            return true;
+        }
+        return false;
+    }
+    
 }
