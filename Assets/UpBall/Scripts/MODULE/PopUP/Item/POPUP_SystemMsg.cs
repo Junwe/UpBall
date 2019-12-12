@@ -8,7 +8,7 @@ public class POPUP_SystemMsg : POPUpHasAction, IPopUp
     [SerializeField]
     private Text _textMsg;
 
-    new void Awake()
+    void Awake()
     {
         base.Awake();
         SetAction(new StartAction(SetTextMsg));

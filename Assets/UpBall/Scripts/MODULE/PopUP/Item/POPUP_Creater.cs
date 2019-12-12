@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class POPUP_Creater : POPUP_Base, IPopUp
 {    
-    public new void Enable()
+    public override void Enable()
     {
         base.Enable();
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("Game_Upball"))
@@ -13,7 +13,7 @@ public class POPUP_Creater : POPUP_Base, IPopUp
         }
     }
  
-    public new void Disable()
+    public override void Disable()
     {
         base.Disable();
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("Game_Upball"))

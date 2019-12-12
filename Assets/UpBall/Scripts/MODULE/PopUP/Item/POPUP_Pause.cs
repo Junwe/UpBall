@@ -5,13 +5,13 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 public class POPUP_Pause : POPUP_Base, IPopUp
 {
-    public new void Enable()
+    public override void Enable()
     {
         base.Enable();
         LevelingData.Instance.IsExit = true;
     }
 
-    public new void Disable()
+    public override void Disable()
     {
         base.Disable();
         Invoke("SetIsExit",0.05f);

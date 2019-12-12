@@ -19,18 +19,18 @@ public class POPUP_Base : MonoBehaviour, IPopUp
         gameObject.transform.localScale = Vector3.zero;
     }
 
-    public void Enable()
+    public virtual void Enable()
     {
         _openTween.Time = 0.25f;
         _openTween.StartTween();
     }
 
-    public void Enable(object value)
+    public virtual void Enable(object value)
     {
         Enable();
     }
 
-    public void Disable()
+    public virtual void Disable()
     {
         _openTween.Time = 0.25f;
         _openTween.ReversePlay();

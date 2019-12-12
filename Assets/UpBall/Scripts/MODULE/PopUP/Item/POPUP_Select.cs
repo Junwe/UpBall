@@ -14,7 +14,7 @@ public class POPUP_Select : POPUpHasAction ,IPopUp
      public Sprite[] spriteList;
     
     // Start is called before the first frame update
-    new void Awake()
+    public void Awake()
     {
         base.Awake();
         SetAction(new StartAction(SetPlayer));
