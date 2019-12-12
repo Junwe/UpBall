@@ -8,52 +8,25 @@ enum PLAYERTYPE
     PLAYER01 = 0,
     PLAYER02 = 2
 }
-public class POPUP_Select : MonoBehaviour,IPopUp
+public class POPUP_Select : POPUpHasAction ,IPopUp
 {
-     public TweenScale _openTween;
-
      public Image[] ImageList;
      public Sprite[] spriteList;
-
-    private UnityAction<string> _startCallBack = (string value) => { };
-
-    public UnityAction<string> StartCallBack
-    {
-        get { return _startCallBack;}
-        set {_startCallBack = value;}
-    }
-    public GameObject obj
-    {
-        get { return gameObject;}
-    }
     
     // Start is called before the first frame update
-    void Awake()
+    new void Awake()
     {
-        PopUpManager.Instance.AddPop(gameObject.name, this);   // 팝업에 등록
-        _startCallBack = (string msg) => { SetPlayer(string.Empty); };
-             gameObject.SetActive(false);
-    }
-
-    public void Enable()
-    {
-        gameObject.SetActive(true);
-        _openTween.StartTween();
-    }
-
-    public void Disable()
-    {
-        _openTween.ReversePlay();
+        base.Awake();
+        SetAction(new StartAction(SetPlayer));
     }
 
     public void ClickPlayer(int num)
     {
         PlayerPrefs.SetInt("PlayerSelect",num);
-        SetPlayer(string.Empty);
         PopUpManager.Instance.DisablePopUp(name);
     }
 
-    private void SetPlayer(string msg)
+    private void SetPlayer()
     {
         int select = PlayerPrefs.GetInt("PlayerSelect",0);
 

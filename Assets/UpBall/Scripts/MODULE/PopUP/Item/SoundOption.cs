@@ -25,8 +25,6 @@ public class SoundOption : MonoBehaviour
         _soundTextToString.Add(_EffString, _effText);
         _soundTextToString.Add(_BgmStinrg, _bgmOfftext);
 
-        gameObject.SetActive(false);
-
         foreach(var s in _soundTextToString)
         {
             if(PlayerPrefs.GetInt(s.Key,0) == 1)

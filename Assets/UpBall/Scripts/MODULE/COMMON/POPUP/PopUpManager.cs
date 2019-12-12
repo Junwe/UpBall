@@ -55,19 +55,18 @@ public class PopUpManager : MonoSingleton<PopUpManager>
         }
         SetBackGroundHierarchy(_popupToStringInScene[name].obj.transform);
         _popUpLlistStack.Push(_popupToStringInScene[name]);
-        _popupToStringInScene[name].Enable();
     }
 
     public void EnablePopUp(string name)
     {
         SetUpPopUp(name);
-        _popupToStringInScene[name].StartCallBack(null);
+        _popupToStringInScene[name].Enable();
     }
 
-        public void EnablePopUp(string name,string value)
+    public void EnablePopUp(string name,object value)
     {
         SetUpPopUp(name);
-        _popupToStringInScene[name].StartCallBack(value);
+        _popupToStringInScene[name].Enable(value);
     }
 
 
