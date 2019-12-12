@@ -77,7 +77,7 @@ public class PopUpManager : MonoSingleton<PopUpManager>
         ClearPopUpStack();
     }
 
-    public void ClearPopUpStack()
+    private void ClearPopUpStack()
     {
         _popUpLlistStack.Pop();
         if (_popUpLlistStack.Count == 0)
@@ -87,7 +87,7 @@ public class PopUpManager : MonoSingleton<PopUpManager>
         }
     }
 
-    public void DisableTopPopUp()
+    private void DisableTopPopUp()
     {
         try
         {
