@@ -58,9 +58,9 @@ public class trajectory : MonoBehaviour
     private void setTrajectoryPoints(Vector3 pStartPosition, Vector3 pVelocity)
     {
         DisableTragectoryPonints();
-        float velocity = Mathf.Sqrt((pVelocity.x * pVelocity.x) + (pVelocity.y * pVelocity.y));
+        float velocity = Mathf.Sqrt((pVelocity.x * pVelocity.x) + (pVelocity.y * pVelocity.y)); // 속도 구하기
         Vector3 nomalvec;
-        float angle = Mathf.Rad2Deg * (Mathf.Atan2(pVelocity.y, pVelocity.x));
+        float angle = Mathf.Rad2Deg * (Mathf.Atan2(pVelocity.y, pVelocity.x));  // 각도 구하기
         float fTime = 0;
         int tragectoryNum = (int)(numOfTrajectoryPoints * (TouchPower.instance.MovePower / TouchPower.instance.MaxPower));
         fTime += 0.1f;
@@ -75,7 +75,6 @@ public class trajectory : MonoBehaviour
             trajectoryPoints[i].transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(pVelocity.y - (Physics.gravity.magnitude) * fTime, pVelocity.x) * Mathf.Rad2Deg);
             fTime += 0.1f;
 
-
             bool checkLeft = WallManager.instance.IsLeftWallCol(pos);
             bool checkRight = WallManager.instance.IsRightWallCol(pos);
 
@@ -85,9 +84,10 @@ public class trajectory : MonoBehaviour
                     nomalvec = Vector3.left;
                 else
                     nomalvec = Vector3.right;
-                Vector3 incomingVector = pos - pStartPosition;  //입사각
+
+                //Vector2 imp = new Vector2(pVelocity.x, pVelocity.y - (Physics2D.gravity.magnitude * fTime));
+                Vector3 incomingVector = new Vector3(dx, dy);  //입사각
                 incomingVector = incomingVector.normalized * ((incomingVector / fTime).magnitude - 2f);
-                Vector3 inverseVector = -incomingVector; //입사각의 반대각
 
                 Vector3 normalVector = nomalvec; //법선벡터
 
@@ -99,6 +99,7 @@ public class trajectory : MonoBehaviour
                 return;
             }
             temp = Vector3.zero;
+
         }
     }
 
