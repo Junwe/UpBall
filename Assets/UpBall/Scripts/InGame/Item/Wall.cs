@@ -83,11 +83,14 @@ public class Wall : MonoBehaviour
 
             if (transform.localPosition.y <= -11.97f)
             {
+                ClearWall();
+            }
+            if(transform.localPosition.y <= -8.42f)
+            {
                 if (WallManager.instance.sprGround.color.a != 0f)
                 {
                     WallManager.instance.HideGround();
                 }
-                ClearWall();
             }
         }
     }
