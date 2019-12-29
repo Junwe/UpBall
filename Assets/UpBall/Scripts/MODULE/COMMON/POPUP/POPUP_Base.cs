@@ -10,19 +10,33 @@ public class POPUP_Base : MonoBehaviour, IPopUp
     public TweenScale _openTween;
     public GameObject obj
     {
-        get { return gameObject;}
+        get { return gameObject; }
     }
 
     public void Awake()
     {
         PopUpManager.Instance.AddPop(gameObject.name, this);
-        gameObject.transform.localScale = Vector3.zero;
+        if (_openTween != null)
+        {
+            gameObject.transform.localScale = Vector3.zero;
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public virtual void Enable()
     {
-        _openTween.Time = 0.25f;
-        _openTween.StartTween();
+        if (_openTween != null)
+        {
+            _openTween.Time = 0.25f;
+            _openTween.StartTween();
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     public virtual void Enable(object value)
@@ -32,7 +46,14 @@ public class POPUP_Base : MonoBehaviour, IPopUp
 
     public virtual void Disable()
     {
-        _openTween.Time = 0.25f;
-        _openTween.ReversePlay();
+        if (_openTween != null)
+        {
+            _openTween.Time = 0.25f;
+            _openTween.ReversePlay();
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -10,8 +10,7 @@ enum PLAYERTYPE
 }
 public class POPUP_Select : POPUpHasAction ,IPopUp
 {
-     public Image[] ImageList;
-     public Sprite[] spriteList;
+    public List<SelectItem> listSelectItmes;
     
     // Start is called before the first frame update
     public void Awake()
@@ -23,34 +22,19 @@ public class POPUP_Select : POPUpHasAction ,IPopUp
     public void ClickPlayer(int num)
     {
         PlayerPrefs.SetInt("PlayerSelect",num);
-        PopUpManager.Instance.DisablePopUp(name);
+        SetPlayer();
+        //PopUpManager.Instance.DisablePopUp(name);
     }
 
     private void SetPlayer()
     {
         int select = PlayerPrefs.GetInt("PlayerSelect",0);
 
-        if(select == 0)
+        foreach(var itme in listSelectItmes)
         {
-            ImageList[GetIndex(PLAYERTYPE.PLAYER01)].sprite = GetSelectSprite((int)PLAYERTYPE.PLAYER01, true);
-            ImageList[GetIndex(PLAYERTYPE.PLAYER02)].sprite = GetSelectSprite((int)PLAYERTYPE.PLAYER02, false);
+            itme.SetSelect(false);
         }
-        else
-        {
-            ImageList[GetIndex(PLAYERTYPE.PLAYER01)].sprite = GetSelectSprite((int)PLAYERTYPE.PLAYER01, false);
-            ImageList[GetIndex(PLAYERTYPE.PLAYER02)].sprite = GetSelectSprite((int)PLAYERTYPE.PLAYER02, true);
-        }
+        listSelectItmes[select].SetSelect(true);
+
     }
-
-
-    private Sprite GetSelectSprite(int num,bool onoff)
-    {
-        return spriteList[num + (onoff ? 0 : 1)];
-    }
-
-    private int GetIndex(PLAYERTYPE type)
-    {
-        return (int)type - ((int)type / 2);
-    }
-
 }
