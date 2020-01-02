@@ -6048,7 +6048,7 @@ MonoBehaviour:
   - Korean
   - English
   values:
-  - "\uBA54\uC778\uD654\uBA74"
+  - HOME
   - HOME
   sprties: []
 --- !u!1 &3919472896510449526
@@ -6404,7 +6404,7 @@ MonoBehaviour:
   - Korean
   - English
   values:
-  - "\uD50C\uB808\uC774"
+  - RETRY
   - RETRY
   sprties: []
 --- !u!1 &3919472896631358991
@@ -8357,11 +8357,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: I_PopUp_Guide
-      objectReference: {fileID: 0}
-    - target: {fileID: 7761210862542989467, guid: caac7bae4204e354288177163b394b15,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6507746895808618239, guid: caac7bae4204e354288177163b394b15,
         type: 3}

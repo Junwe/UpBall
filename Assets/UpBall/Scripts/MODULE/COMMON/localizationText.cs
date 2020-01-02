@@ -9,19 +9,19 @@ public class localizationText : MonoBehaviour
     public Sprite[] sprties;
 
     private Text _text;
-    private SpriteRenderer _sprite;
+    private Image _image;
     void Start()
     {
         _text = GetComponent<Text>();
-        _sprite = GetComponent<SpriteRenderer>();
+        _image = GetComponent<Image>();
 
         if(_text != null)
         {
             _text.text = values[GetKey()];
         }
-        else if(_sprite != null)
+        else if(_image != null)
         {
-            _sprite.sprite = sprties[GetKey()];
+            _image.sprite = sprties[GetKey()];
         }
     }
 
