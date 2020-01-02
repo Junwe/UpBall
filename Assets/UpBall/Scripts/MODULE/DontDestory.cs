@@ -9,6 +9,7 @@ public class DontDestory : MonoBehaviour
     private TextAsset _levlingdata;
     void Awake()
     {
+        localizationData.Instance.SetLanguage(Application.systemLanguage.ToString());
         DontDestroyOnLoad(this);
         LevelingData.Instance.SetInfo(_levlingdata.text);
         //string temp = JsonUtility.ToJson(LevelingData.Instance.info,true);

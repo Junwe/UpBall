@@ -29,11 +29,7 @@ public class POPUP_Select : POPUpHasAction ,IPopUp
     private void SetPlayer()
     {
         int select = PlayerPrefs.GetInt("PlayerSelect",0);
-
-        foreach(var itme in listSelectItmes)
-        {
-            itme.SetSelect(false);
-        }
+        listSelectItmes.ForEach(item => { item.SetSelect(false); });
         listSelectItmes[select].SetSelect(true);
 
     }

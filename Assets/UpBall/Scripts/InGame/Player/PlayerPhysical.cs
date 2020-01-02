@@ -130,7 +130,6 @@ public class PlayerPhysical : MonoBehaviour, IPlayerPhysical
     {
         if (collision.gameObject.tag.Equals("Wall"))
         {
-            Debug.Log(transform.localPosition);
             if (_currentMovePower >= 8.0f)
                 UIManager.instance.ShakeCamera(0.05f, 0.1f);
 
