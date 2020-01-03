@@ -10,12 +10,7 @@ public interface IPopUp
     }
     void Enable();
 
-    void Disable();
+    void Enable(object value);
 
-    UnityAction<string> StartCallBack
-    {
-        get;
-        set;
-    }
-    
+    void Disable();
 }

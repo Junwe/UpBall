@@ -3,40 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-public class POPUP_Pause : MonoBehaviour, IPopUp
+public class POPUP_Pause : POPUP_Base, IPopUp
 {
-    [SerializeField]
-    private TweenScale _openTween;
-    public GameObject obj
+    public override void Enable()
     {
-        get { return gameObject;}
-    }
-
-    private UnityAction<string> _startCallBack = (string value)=>{};
-
-    public UnityAction<string> StartCallBack
-    {
-        get { return _startCallBack;}
-        set {_startCallBack = value;}
-    }
-    
-    // Start is called before the first frame update
-    
-    void Awake()
-    {
-        PopUpManager.Instance.AddPop(gameObject.name, this);   // 팝업에 등록
-    }
-    public void Enable()
-    {
-        gameObject.SetActive(true);
+        base.Enable();
         LevelingData.Instance.IsExit = true;
-        _openTween.StartTween();
     }
 
-    public void Disable()
+    public override void Disable()
     {
+        base.Disable();
         Invoke("SetIsExit",0.05f);
-        _openTween.ReversePlay();
     }
 
     private void SetIsExit()
